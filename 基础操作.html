@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>基础操作</title>
+		<script type="text/javascript" src="vue.min.js"></script>
+		<style type="text/css">
+			[v-cloak]{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app"> 
+			<h4>1.使用{{}}来绑定(只会替换占位符):</h4>
+			<span v-cloak>{{msg}}</span>
+			<h4>2.v-text也可以绑定(没有加载显示问题,会覆盖以前的数据):</h4>
+			<span v-text="msg"></span>
+			<h4>3.v-html可以用来输出HTML代码:</h4>
+			<span v-html="msg2"></span>
+			<h4>4.v-bind绑定属性的指令:[v-bind:可以简写为:]</h4>
+			<pre style="display: inline-block">&ltinput type="button" value="动态赋值" v-bind:title="myTitle" /&gt</pre>
+			<input type="button" value="动态赋值" v-bind:title="myTitle+'(可写合法的表达式)'" />
+			<h4>5.v-on绑定事件的指令:</h4>
+			<pre style="display: inline-block">&ltinput type="button" v-on:click="alert('v-on:click添加绑定事件')" value="v-on"/&gt</pre>
+			<input type="button" v-on:click="Show" value="v-on"/>
+		</div>
+		<div>
+			<span>在使用VUE前,需要先实例化对象</span>
+			<pre>
+	var vue=new Vue({  							
+		el:"#app",							
+		data:{								
+			msg:"使用'v-cloak'可以避免闪烁"	
+		},
+		methods:{
+			show:function(){
+				
+			}
+		}
+		
+	})										
+	</pre>
+		</div>
+		<script>
+			var vue=new Vue({
+				el:"#app",
+				data:{
+					msg:"msg:使用'v-cloak'可以避免闪烁",
+					msg2:"msg:<text>v-html会解析html标签</text>",
+					myTitle:"使用v-bind:title动态绑定title"
+				},
+				methods:{
+					Show:function(){
+						alert('v-on:click添加绑定事件')
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
